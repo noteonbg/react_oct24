@@ -1,0 +1,79 @@
+install nvm (Node Version Manager), which allows you to manage multiple versions of Node.js on your system
+
+Open Terminal.
+
+Run the installation script:
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+source ~/.bashrc  # or ~/.bash_profile or ~/.zshrc
+
+nvm --version
+
+--------------------------
+
+to install specific version of Node
+nvm install <version>
+nvm install 14.17.0
+
+to use
+nvm use <version>
+
+to list node versions 
+nvm ls
+
+to view remote versions
+nvm ls-remote   
+
+-------------------------
+
+Adding Components
+To add a new component, you can create a new file in the
+ src folder, for example, Hello.js
+
+ import React from 'react';
+
+const Hello = () => {
+    return <h1>Hello, World!</h1>;
+};
+
+export default Hello;
+
+--------------------------
+
+import React from 'react';
+import Hello from './Hello';
+
+const App = () => {
+    return (
+        <div>
+            <Hello />
+        </div>
+    );
+};
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,7 +8,8 @@ import ProductionDashboard from './x01componentcomposition/ProductionDashboard';
 import TwoWayBinding from './x02twowaybinding/twowayuse';
 import CP_ProductionDashboard from './x03childtoparentcommu/ProductionDashboard';
 import X04ProductionDashboard from './x04resuablecomponents/x04ProductionDashboard';
-
+import ControlledInput from './x04controlledcomponent/Controlledcomponent';
+import ProductRegistration from './x04controlledcomponent/ProductRegistration';
 
 
 const App = () => {
@@ -27,6 +28,12 @@ const App = () => {
 
             <hr/>
             <X04ProductionDashboard/>
+
+            <hr/>
+            <ControlledInput/>
+            <hr/>
+            <ProductRegistration/>
+
            
 
 

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const PostLogin = ({ onLogout }) => {
+const PostLogin = ({ onLogout,username }) => {
   const [num1, setNum1] = useState('');
   const [num2, setNum2] = useState('');
   const [result, setResult] = useState(null);
@@ -14,6 +14,7 @@ const PostLogin = ({ onLogout }) => {
 
   return (
     <div>
+      <h1>Welcome, {username}!</h1>
       <h1>Add Two Numbers</h1>
       <input
         type="number"

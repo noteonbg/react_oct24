@@ -30,21 +30,21 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route
             path="/login"
-            element={<Login onLogin={handleLogin} />}
+            element={<Login onLogin={handleLogin} username={username} />}
           />
           <Route
             path="/post-login"
             element={
               isLoggedIn ? (
-                <PostLogin onLogout={handleLogout} />
+                <PostLogin onLogout={handleLogout} username={username}/>
               ) : (
                 <Home />
               )
             }
           />
 
-    <Route path="/read-number" element={<ReadNumber />} />
-    <Route path="/read-number-via-query" element={<ReadNumberViaQuery />} />
+    <Route path="/read-number" element={<ReadNumber username={username}/>} />
+    <Route path="/read-number-via-query" element={<ReadNumberViaQuery  username={username}/>} />
         </Routes>
       </div>
     </Router>

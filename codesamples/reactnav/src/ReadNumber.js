@@ -2,13 +2,14 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
-const ReadNumber = () => {
+const ReadNumber = ({ username }) => {
   const location = useLocation();
   const { number } = location.state || { number: null };
 
   return (
     <div>
       <h1>Read Number</h1>
+      <h2>Welcome, {username}!</h2>
       {number !== null ? (
         <h2>The passed number is: {number}</h2>
       ) : (

@@ -10,13 +10,42 @@ import CP_ProductionDashboard from './x03childtoparentcommu/ProductionDashboard'
 import X04ProductionDashboard from './x04resuablecomponents/x04ProductionDashboard';
 import ControlledInput from './x04controlledcomponent/Controlledcomponent';
 import ProductRegistration from './x04controlledcomponent/ProductRegistration';
+import MachineStatusDashboard from './x05useeffect/MachineStatusDashboard';
+import ProductionMetricsDashboard from './x05useeffect/ProductionMetricsDashboard';
+import MaintenanceSchedule from './x05useeffect/MaintenanceSchedule';
+import HigherOrderComp from './x30higherordercomponents/usehigher';
+import ManufacturingDashboard from './x31childtoparentcommunication/ManufacturingDashboard';
+
+import UseRedux from './x34reduxtoolkit/UseRedux';
+import ContextUsage from './x33contextexample/ContextUsage';
+import PocValidation from './x35validation/pocvalidation';
+import UseMemoUsage from './x29useMemo/UseMemoUsage';
+import RoutingMain from './x40reactrouting/RoutingMain';
+
 
 
 const App = () => {
     return (
         <div>
-            <h1>Manufacturing Inventory Management</h1>
-            <ProductionInventory />
+            <RoutingMain/>        
+        </div>
+    );
+};
+
+export default App;
+
+/*
+    <UseMemoUsage/>
+        <ContextUsage/>
+            <PocValidation/>
+            <UseRedux/>
+            <ProductionMetricsDashboard/>
+            <MaintenanceSchedule/>
+            <HigherOrderComp/>
+            <ManufacturingDashboard/>
+            <MachineList/>
+
+<ProductionInventory />
             <Counter/>
             <ProductionLog/>
             <ProductionDashboard/>
@@ -34,19 +63,8 @@ const App = () => {
             <hr/>
             <ProductRegistration/>
 
-           
 
-
-            
-            
-
-            
-            
-        </div>
-    );
-};
-
-export default App;
+*/
 
 
 /*

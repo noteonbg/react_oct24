@@ -1,0 +1,109 @@
+ terminologies related to Redux:
+
+ 1. Store
+The central repository that holds the entire state of your application. There is typically one store in a Redux application, and it is created using `createStore()`.
+
+ 2. Action
+An object that describes a change in the state. Actions must have a `type` property that indicates the type of action being performed. They can also have an optional `payload` property to include additional data.
+
+ 3. Reducer
+A pure function that takes the current state and an action as arguments and returns a new state. Reducers are responsible for specifying how the application's state changes in response to actions.
+
+ 4. Dispatch
+A function used to send actions to the store. When you dispatch an action, it triggers the reducers, which update the state accordingly.
+
+ 5. State
+The data that represents the current status of the application. The state is held in the Redux store and can be accessed by components.
+
+ 6. Selectors
+Functions that retrieve specific pieces of data from the Redux store. Selectors help abstract the state access logic and can be reused across components.
+
+ 7. Middleware
+A way to enhance Redux with additional functionality. Middleware can intercept actions dispatched to the store, allowing for tasks such as logging, asynchronous requests, or conditional dispatching.
+
+ 8. Thunk
+A type of middleware that allows action creators to return a
+ function instead of an action.
+  This is useful for handling asynchronous operations,
+   like fetching data from an API.
+
+ 9. Combine Reducers
+A utility function that allows you to combine multiple reducers into a single reducer function. This is useful for organizing state management in larger applications.
+
+ 10. Provider
+A component from the `react-redux` library that makes the Redux store available to any nested components. You typically wrap your application with a `Provider` and pass in the store.
+
+ 11. useSelector
+A hook provided by `react-redux` that allows functional components to extract data from the Redux store state.
+
+ 12. useDispatch
+A hook provided by `react-redux` that gives components access to the `dispatch` function, allowing them to dispatch actions to the store.
+
+
+
+
+-------------------------------------
+
+MOre details
+
+Redux Store: Centralized state for the application.
+
+import { createStore } from 'redux';
+
+const initialState = {
+  inventory: 100,
+  productionOrders: [],
+  status: 'idle',
+};
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    // Handle actions here
+    default:
+      return state;
+  }
+};
+
+const store = createStore(reducer);
+
+
+
+Action Creators: Functions to create actions.
+const addProductionOrder = (order) => ({
+  type: 'ADD_PRODUCTION_ORDER',
+  payload: order,
+});
+
+const updateInventory = (amount) => ({
+  type: 'UPDATE_INVENTORY',
+  payload: amount,
+});
+
+
+
+Actions are plain JavaScript objects that have a type property and an optional payload. 
+They describe what happened in the application.
+// Adding a production order
+{
+  type: 'ADD_PRODUCTION_ORDER',
+  payload: { id: 1, quantity: 50 }
+}
+
+// Updating inventory
+{
+  type: 'UPDATE_INVENTORY',
+  payload: -50  // Decreasing inventory by 50
+}
+
+
+
+
+
+
+
+Dispatch: Function to send actions to the store.
+Dispatch is a function provided by Redux that sends actions to the store. When you call dispatch, you send an action to the reducer to update the state.
+
+
+
+Selectors: Functions to extract specific pieces of state from the store.

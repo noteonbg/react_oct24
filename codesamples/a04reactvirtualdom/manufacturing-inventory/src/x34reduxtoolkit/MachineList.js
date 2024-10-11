@@ -5,9 +5,12 @@ import { toggleStatus, addMachine } from './machinesSlice';
 
 const MachineList = () => {
   const dispatch = useDispatch();
+
+  //below is reading the state
   const machines = useSelector((state) => state.machines);
 
   const handleToggle = (id) => {
+    //changing the state.
     dispatch(toggleStatus(id));
   };
 
@@ -53,7 +56,9 @@ Rendering: The component maps over the machines array and displays each machine'
 It also provides a button to add a new machine.
 
 Summary of the Example
-This Redux Toolkit example illustrates how to manage a simple inventory of machines in a manufacturing context. Key functionalities include:
+This Redux Toolkit example illustrates how to manage a 
+simple inventory of machines in a manufacturing context. 
+Key functionalities include:
 
 State Management: The Redux store manages the state of the machines, allowing easy updates and access to machine data across components.
 Action Dispatching: Components can dispatch actions to update the state (toggle machine status, add new machines).

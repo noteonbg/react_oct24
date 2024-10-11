@@ -1,0 +1,15 @@
+In a React functional component, hooks are called in the following order during the rendering process:
+
+1. useState: This hook is called to initialize and manage state. It is called during the rendering phase of the component.
+
+2. useEffect: After the component has rendered and all hooks (including `useState`) have been called, `useEffect` runs. This is where you can perform side effects based on the state or props, such as data fetching or subscriptions.
+
+3. Other hooks: If you use other hooks like `useContext`, `useReducer`, or custom hooks, they are also called in the order they appear in the component. Each of these hooks will follow the same principle of being called before `useEffect` runs.
+
+ Summary of the Order:
+1. useState
+2. useReducer (if used)
+3. useContext (if used)
+4. useEffect (runs after the render)
+
+This order is crucial because it ensures that the state and props are properly set before any side effects are executed in `useEffect`.

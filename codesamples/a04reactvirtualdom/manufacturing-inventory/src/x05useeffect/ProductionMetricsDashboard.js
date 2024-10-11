@@ -21,6 +21,10 @@ const ProductionMetricsDashboard = () => {
     return () => clearTimeout(timer); // Cleanup timeout on unmount
   }, []); // Runs only once on mount
 
+
+
+  
+
   // Calculate total output and average efficiency using useMemo
   const totalOutput = useMemo(() => {
     return productionData.reduce((total, item) => total + item.output, 0);

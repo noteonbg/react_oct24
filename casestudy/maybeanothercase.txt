@@ -1,0 +1,43 @@
+may be case study..
+
+Requirements:
+Components:
+
+MedicationList: Displays a list of medications. Each medication shows its name, stock level, and a button to restock.
+MedicationItem: Represents a single medication item, displaying the medication name, stock level, and an input for restocking the quantity.
+RestockForm: A form component that takes the medication name and the quantity to restock.
+Redux Store:
+
+Create a Redux store to manage the state of medications. The store should contain:
+An array of medication objects, where each object includes:
+id: unique identifier
+name: name of the medication
+stockLevel: current stock level
+Actions:
+
+ADD_MEDICATION: Action to add a new medication.
+RESTOCK_MEDICATION: Action to update the stock level of an existing medication.
+FETCH_MEDICATIONS: Action to fetch initial medication data.
+Reducers:
+
+Create a reducer to handle medication-related actions:
+medications: Handle the ADD_MEDICATION and RESTOCK_MEDICATION actions to update the state accordingly.
+State Management:
+
+Use useSelector to access medication data from the Redux store in the MedicationList component.
+Use useDispatch to dispatch actions from the RestockForm when restocking medications.
+Props:
+
+The MedicationList will pass down medication details to the MedicationItem component using props.
+The MedicationItem will call the Redux action to restock the medication when the user submits the RestockForm.
+Functionality:
+When the user clicks the "Restock" button in the MedicationItem, it should open the RestockForm.
+Upon submitting the RestockForm, the Redux action RESTOCK_MEDICATION should be dispatched to update the stock level in the Redux store.
+The UI should automatically reflect the updated stock levels from the Redux store.
+
+example 
+[
+  { "id": 1, "name": "Aspirin", "stockLevel": 50 },
+  { "id": 2, "name": "Ibuprofen", "stockLevel": 30 },
+  { "id": 3, "name": "Amoxicillin", "stockLevel": 20 }
+]

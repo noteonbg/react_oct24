@@ -21,6 +21,7 @@ import ContextUsage from './x33contextexample/ContextUsage';
 import PocValidation from './x35validation/pocvalidation';
 import UseMemoUsage from './x29useMemo/UseMemoUsage';
 import UseReduxm from './x36redux/usereduxm';
+import CheckLifeCycle from './x37lifecycle/CheckLifeCycle';
 
 
 
@@ -28,7 +29,8 @@ import UseReduxm from './x36redux/usereduxm';
 const App = () => {
     return (
         <div>
-            <UseReduxm/>       
+            <CheckLifeCycle/>
+                
         </div>
     );
 };
@@ -36,6 +38,7 @@ const App = () => {
 export default App;
 
 /*
+<UseReduxm/>   
     <UseMemoUsage/>
         <ContextUsage/>
             <PocValidation/>

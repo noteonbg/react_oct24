@@ -20,14 +20,15 @@ import UseRedux from './x34reduxtoolkit/UseRedux';
 import ContextUsage from './x33contextexample/ContextUsage';
 import PocValidation from './x35validation/pocvalidation';
 import UseMemoUsage from './x29useMemo/UseMemoUsage';
-import RoutingMain from './x40reactrouting/RoutingMain';
+import UseReduxm from './x36redux/usereduxm';
+
 
 
 
 const App = () => {
     return (
         <div>
-            <RoutingMain/>        
+            <UseReduxm/>       
         </div>
     );
 };

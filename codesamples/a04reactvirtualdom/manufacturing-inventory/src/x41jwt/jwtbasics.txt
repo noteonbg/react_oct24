@@ -1,0 +1,124 @@
+JSON Web Tokens (JWT) are a widely used method for securely transmitting information between parties. Here are the basics of JWT:
+
+ 1. Structure of JWT
+
+A JWT consists of three parts, separated by dots (`.`):
+
+- Header: Contains metadata about the token, typically specifying the signing algorithm (e.g., HMAC, RSA) and the token type.
+  
+  Example:
+ json
+  {
+    "alg": "HS256",
+    "typ": "JWT"
+  }
+ 
+
+- Payload: Contains the claims (the information you want to transmit). Claims can be standard (like `iss` for issuer, `exp` for expiration) or custom (like user ID or roles).
+
+  Example:
+ json
+  {
+    "sub": "1234567890",
+    "name": "John Doe",
+    "admin": true,
+    "iat": 1516239022
+  }
+ 
+
+- Signature: Created by taking the encoded header, the encoded payload, a secret key, and signing it using the specified algorithm. This ensures that the token hasn't been altered.
+
+ 2. How JWT Works
+
+1. Authentication: When a user logs in, the server verifies their credentials and generates a JWT. This token is sent back to the client.
+
+2. Storage: The client stores the JWT (usually in local storage or cookies).
+
+3. Authorization: For subsequent requests, the client includes the JWT in the Authorization header using the Bearer schema:
+
+  
+   Authorization: Bearer <token>
+  
+
+4. Verification: The server verifies the token's signature using the secret key. If valid, it processes the request; if not, it returns an error.
+
+ 3. Claims in JWT
+
+Claims are statements about an entity (usually, the user) and additional data. They can be classified into three types:
+
+- Registered Claims: Standard claims that are predefined in the JWT specification, like:
+  - `iss` (Issuer)
+  - `exp` (Expiration Time)
+  - `sub` (Subject)
+  - `aud` (Audience)
+
+- Public Claims: Custom claims defined by the application that can be used to share information.
+
+- Private Claims: Custom claims created to share information between parties that agree on using them.
+
+ 4. Security Considerations
+
+- Secret Management: Keep the secret key used for signing the JWT safe. If compromised, attackers can create valid tokens.
+
+- Token Expiration: Set an expiration (`exp`) for your tokens to limit their lifespan and mitigate risks if they are compromised.
+
+- Revocation: Implement a mechanism to revoke tokens if needed (e.g., using a blacklist).
+
+ 5. Benefits of JWT
+
+- Stateless: JWTs are self-contained and can carry the necessary information, reducing server state management.
+
+- Cross-Domain Authentication: JWTs can be used across different domains, making them suitable for microservices.
+
+- Compact: JWTs can be sent via URL, POST, or inside HTTP headers because they are compact.
+
+
+
+Sure! Let's consider an example of using JWT in the manufacturing domain for a hypothetical system that tracks and manages inventory.
+
+ Scenario: Inventory Management System
+
+ Overview
+In a manufacturing company, there is an inventory management system that allows employees to view, add, update, and delete inventory items (e.g., raw materials, finished products). The system needs to ensure that only authorized users can perform these actions.
+
+ Roles
+- Admin: Can manage all inventory items.
+- Warehouse Staff: Can view and update inventory items but cannot delete them.
+
+ How JWT is Used
+
+1. User Authentication:
+   - When an employee logs into the inventory management system, they provide their credentials (username and password).
+   - The system verifies these credentials. If they are valid, the system generates a JWT that includes claims such as:
+     - `sub`: User ID (to identify the user)
+     - `role`: User role (Admin or Warehouse Staff)
+     - `exp`: Token expiration time (e.g., 1 hour)
+
+2. Token Issuance:
+   - The generated JWT is sent back to the user's client (web browser or mobile app). This token serves as proof of the user's identity and permissions.
+
+3. Accessing Protected Resources:
+   - For subsequent requests (e.g., viewing or updating inventory), the client includes the JWT in the Authorization header:
+    
+     Authorization: Bearer <token>
+    
+   - The server receives the request, extracts the JWT, and verifies its signature and claims.
+
+4. Authorization:
+   - Based on the claims in the JWT, the server determines if the user has the right permissions to perform the requested action:
+     - If the user is an Admin, they can add, update, or delete inventory items.
+     - If the user is Warehouse Staff, they can view and update items but not delete them.
+
+5. Token Expiration and Renewal:
+   - If the token is still valid when the user attempts an action, the request is processed. If the token has expired, the server returns a 401 Unauthorized response.
+   - The client can prompt the user to log in again to obtain a new token.
+
+ Benefits in this Scenario
+
+- Security: JWTs securely transmit user identity and roles, ensuring that only authorized users can perform actions on the inventory.
+- Statelessness: The server does not need to store session information, making the system more scalable.
+- Efficiency: JWTs are compact and can be easily passed between the client and server, facilitating quick authentication checks.
+
+ Conclusion
+
+This example illustrates how JWT can enhance security and efficiency in a manufacturing domain's inventory management system by providing a reliable way to authenticate and authorize users based on their roles.

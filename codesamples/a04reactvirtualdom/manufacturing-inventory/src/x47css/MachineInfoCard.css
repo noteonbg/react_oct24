@@ -1,0 +1,34 @@
+/* MachineInfoCard.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .machine-card {
+    background-color: #ffffff;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 2rem; /* Uses rem for padding */
+    margin: 2% auto; /* Margin is set as a percentage */
+    max-width: 600px; /* Max width of the card */
+    width: 90vw; /* Width in viewport width */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .machine-name {
+    font-size: 2rem; /* Uses rem for font size */
+    margin-bottom: 1em; /* Uses em for margin */
+    color: #333;
+  }
+  
+  .machine-type,
+  .machine-status,
+  .machine-description {
+    font-size: 1rem; /* Base font size */
+    margin: 0.5em 0; /* Uses em for vertical margin */
+    color: #555;
+  }
+  

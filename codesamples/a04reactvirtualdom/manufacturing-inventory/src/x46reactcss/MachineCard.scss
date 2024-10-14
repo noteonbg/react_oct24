@@ -1,0 +1,117 @@
+// src/components/MachineCard.scss
+
+.machine-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.3s;
+  
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+    .machine-name {
+      font-size: 1.5rem;
+      color: #333;
+    }
+  
+    .machine-status {
+      font-size: 1rem;
+      color: #007bff;
+    }
+  
+    .machine-type {
+      font-size: 0.9rem;
+      color: #555;
+    }
+  }
+  
+
+  /*
+
+border: 1px solid #ccc;: Adds a light gray border around the card.
+border-radius: 8px;: Rounds the corners of the card.
+padding: 16px;: Adds space inside the card, around its content.
+margin: 10px;: Adds space outside the card, separating it from other elements.
+background-color: #f9f9f9;: Sets a light gray background color for the card.
+transition: box-shadow 0.3s;: Smoothly transitions the box-shadow effect over 0.3 seconds when it changes.
+
+&:hover:
+This nested selector applies styles when the mouse
+ hovers over the .machine-card.
+  The & refers to the parent selector,
+   which is .machine-card in this case.
+
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);: Adds a subtle
+    shadow effect beneath the card, creating a visual
+     lift effect. The shadow becomes visible when hovering,
+      enhancing the interactivity of the card.
+
+Nested Classes:
+
+The following classes are nested within the .machine-card class, which helps in organizing styles specifically for elements inside the card.
+
+.machine-name:
+
+This class styles the name of the machine.
+Properties:
+font-size: 1.5rem;: Sets the font size to be larger for emphasis.
+color: #333;: Uses a dark gray color for the text, improving readability.
+.machine-status:
+
+This class styles the status of the machine.
+Properties:
+font-size: 1rem;: Sets the font size to a standard size.
+color: #007bff;: Applies a blue color to the text, often used to indicate active or important information.
+.machine-type:
+
+This class styles the type of the machine.
+Properties:
+font-size: 0.9rem;: Sets a slightly smaller font size, distinguishing it from the name and status.
+color: #555;: Uses a medium gray color, indicating that this information is less important than the name or status
+
+
+
+
+
+
+
+
+
+  */
+
+
+  /*
+
+  Nesting:
+
+SCSS allows you to nest your styles, making the structure 
+more readable and maintaining a clear hierarchy.
+ In the example, styles for .machine-name,
+  .machine-status, and .machine-type are
+   nested under .machine-card.
+
+   Variables and Mixins:
+While not used in this example, SCSS allows the use of
+ variables and mixins, which help reduce repetition 
+ in your styles and maintain consistency.
+  For instance, you can define a color variable 
+  and use it throughout your styles.
+Cleaner Syntax:
+
+SCSS provides a cleaner syntax and better organization,
+ especially for larger stylesheets, 
+ while traditional CSS can become cluttered with 
+ many classes and styles.
+
+Compiled Output:
+SCSS needs to be compiled into CSS, which is handled
+ automatically by Create React App.
+  This compilation adds additional features and
+   functionalities that plain CSS does not have.
+
+
+
+  */

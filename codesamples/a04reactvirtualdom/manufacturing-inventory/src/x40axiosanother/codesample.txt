@@ -1,0 +1,236 @@
+pip install fastapi uvicorn python-jose[cryptography] pydantic
+
+
+# main.py
+from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from pydantic import BaseModel
+from jose import JWTError, jwt
+from datetime import datetime, timedelta
+
+# Secret key to encode and decode JWT tokens
+SECRET_KEY = "your_secret_key"  # Change this to a secure key
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+app = FastAPI()
+
+# OAuth2 password bearer for security
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+# Dummy user data (in a real application, use a database)
+fake_users_db = {
+    "user@example.com": {
+        "username": "user@example.com",
+        "full_name": "John Doe",
+        "hashed_password": "hashedpassword",  # In a real app, hash passwords!
+        "disabled": False,
+    }
+}
+
+# Pydantic models
+class User(BaseModel):
+    username: str
+    full_name: str
+    disabled: bool = None
+
+class UserInDB(User):
+    hashed_password: str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class TokenData(BaseModel):
+    username: str
+
+# Function to verify user credentials
+def verify_password(plain_password, hashed_password):
+    return plain_password == hashed_password  # Replace with a proper hash check
+
+# Function to get a user by username
+def get_user(db, username: str):
+    if username in db:
+        user_dict = db[username]
+        return UserInDB(**user_dict)
+
+# Function to create a JWT token
+def create_access_token(data: dict, expires_delta: timedelta = None):
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.utcnow() + expires_delta
+    else:
+        expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    to_encode.update({"exp": expire})
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+
+# Endpoint to get the token
+@app.post("/token", response_model=Token)
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    user = get_user(fake_users_db, form_data.username)
+    if not user or not verify_password(form_data.password, user.hashed_password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(data={"sub": user.username}, expires_delta=access_token_expires)
+    return {"access_token": access_token, "token_type": "bearer"}
+
+# Function to get the current user from the token
+async def get_current_user(token: str = Depends(oauth2_scheme)):
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username: str = payload.get("sub")
+        if username is None:
+            raise credentials_exception
+        token_data = TokenData(username=username)
+    except JWTError:
+        raise credentials_exception
+    user = get_user(fake_users_db, username=token_data.username)
+    if user is None:
+        raise credentials_exception
+    return user
+
+# Endpoint to add two numbers
+@app.post("/add")
+async def add_numbers(a: float, b: float, current_user: User = Depends(get_current_user)):
+    return {"result": a + b}
+
+# To run the server, use the command:
+# uvicorn main:app --reload
+
+curl -X POST "http://127.0.0.1:8000/token" -H 
+"Content-Type: application/x-www-form-urlencoded" -d 
+"username=user@example.com&password=hashedpassword"
+
+curl -X POST "http://127.0.0.1:8000/add?a=5&b=10" -H 
+"Authorization: Bearer YOUR_ACCESS_TOKEN"
+
+{
+    "result": 15.0
+}
+
+
+JWT Security: We use JWT to secure the /add endpoint. Users must authenticate with a username and password to obtain a token.
+OAuth2PasswordBearer: This FastAPI dependency is used to handle the token authentication process.
+Pydantic Models: We define models for user data and token response to ensure type safety and validation.
+Token Management: Functions to create, decode, and validate tokens are included to manage user sessions.
+
+//api status_code
+// src/api.js
+import axios from 'axios';
+
+const API_URL = 'http://127.0.0.1:8000'; // FastAPI server URL
+
+// Function to log in and get a token
+export const login = async (username, password) => {
+    const response = await axios.post(`${API_URL}/token`, new URLSearchParams({ username, password }), {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    });
+    return response.data.access_token;
+};
+
+// Function to add two numbers
+export const addNumbers = async (token, a, b) => {
+    const response = await axios.post(
+        `${API_URL}/add?a=${a}&b=${b}`,
+        {},
+        {
+            headers: { Authorization: `Bearer ${token}` }
+        }
+    );
+    return response.data.result;
+};
+
+
+
+
+// src/App.js
+import React, { useState } from 'react';
+import { login, addNumbers } from './api';
+
+function App() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [token, setToken] = useState('');
+    const [numA, setNumA] = useState('');
+    const [numB, setNumB] = useState('');
+    const [result, setResult] = useState('');
+    const [error, setError] = useState('');
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const token = await login(username, password);
+            setToken(token);
+            setError('');
+        } catch (err) {
+            setError('Login failed. Please check your credentials.');
+        }
+    };
+
+    const handleAdd = async (e) => {
+        e.preventDefault();
+        try {
+            const result = await addNumbers(token, numA, numB);
+            setResult(result);
+            setError('');
+        } catch (err) {
+            setError('Error adding numbers. Please check your input or token.');
+        }
+    };
+
+    return (
+        <div className="App">
+            <h1>Login</h1>
+            <form onSubmit={handleLogin}>
+                <input
+                    type="text"
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button type="submit">Login</button>
+            </form>
+
+            {token && (
+                <div>
+                    <h1>Add Two Numbers</h1>
+                    <form onSubmit={handleAdd}>
+                        <input
+                            type="number"
+                            placeholder="Number A"
+                            value={numA}
+                            onChange={(e) => setNumA(e.target.value)}
+                        />
+                        <input
+                            type="number"
+                            placeholder="Number B"
+                            value={numB}
+                            onChange={(e) => setNumB(e.target.value)}
+                        />
+                        <button type="submit">Add</button>
+                    </form>
+                    {result && <p>Result: {result}</p>}
+                </div>
+            )}
+
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+        </div>
+    );
+}
+
+export default App;

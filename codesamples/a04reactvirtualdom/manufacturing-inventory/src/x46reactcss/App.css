@@ -1,0 +1,13 @@
+/* src/App.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+  
+  .machine-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  

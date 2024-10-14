@@ -23,14 +23,30 @@ import UseMemoUsage from './x29useMemo/UseMemoUsage';
 import UseReduxm from './x36redux/usereduxm';
 import CheckLifeCycle from './x37lifecycle/CheckLifeCycle';
 
+import DbhApp from './x40axiosanother/main';
+import JwtAccess from './x41jwt/jwtaccess';
+import LazyLoad from './x38lazyandsuspend/Lazyload';
+import MarkdownEditor from './x42lazyload/lazyload';
+import CodeSplitting from './x43codesplitting/Codesplittingfinal';
+import PocErrorBoundary from './x44errorboundary/PocErrorBoundary';
+import Usescss from './x46reactcss/Usescss';
+import Responsive from './x47css/Responsive';
+import WebSocketUse from './x48websocket/WebSocketUse';
+import WebhookPoc from './x49webhook/WebhookPoc';
+import MachineStatus from './x50SSE/sse';
+import CommentSection from './x51xss/demo';
+import CsrfToken from './x52csrftoken/Csrftoken';
+import LocalStorage from './x53localstorage/LocalStorage';
+import SessionStorage from './x54sessionstorage/SessionStorage';
+import CacheExample from './x55cacheing/CacheExample';
+
 
 
 
 const App = () => {
     return (
         <div>
-            <CheckLifeCycle/>
-                
+          <CacheExample/>
         </div>
     );
 };
@@ -38,6 +54,22 @@ const App = () => {
 export default App;
 
 /*
+
+   <SessionStorage/>
+<LocalStorage/>
+ <CsrfToken/>
+<CommentSection/>
+<MachineStatus/>   
+<WebhookPoc/>  
+<WebSocketUse/>
+<Usescss/>
+<PocErrorBoundary/>
+<MarkdownEditor/>
+<LazyLoad/>
+<JwtAccess/>
+  <DbhApp/>
+<SProductList/>
+<CheckLifeCycle/>
 <UseReduxm/>   
     <UseMemoUsage/>
         <ContextUsage/>

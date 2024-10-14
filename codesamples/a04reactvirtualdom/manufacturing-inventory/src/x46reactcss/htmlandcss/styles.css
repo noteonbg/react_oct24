@@ -1,0 +1,57 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0; /* No margin on the body */
+}
+
+.machine-card {
+    background-color: #ffffff; /* Content background color */
+    border: 2px solid #007bff; /* Border around the card */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Inner spacing (padding) */
+    margin: 20px; /* Outer spacing (margin) */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    width: 300px; /* Fixed width for the card */
+}
+
+.machine-name {
+    font-size: 1.5rem; /* Content font size */
+    margin-bottom: 10px; /* Space below the machine name */
+    color: #333; /* Text color */
+}
+
+.machine-type,
+.machine-status,
+.machine-description {
+    font-size: 1rem; /* Content font size */
+    margin: 5px 0; /* Vertical margin between paragraphs */
+    color: #555; /* Text color */
+}
+
+/*
+
+Margin:
+
+The margin property in .machine-card adds space outside the card, separating it from other elements (like the edge of the viewport).
+The margin-bottom in .machine-name adds space below the machine name for better readability.
+Padding:
+
+The padding property in .machine-card creates space inside the card between the content and the card's border. This prevents text from touching the edges of the card.
+Border:
+
+The border property in .machine-card adds a solid blue border around the card, visually delineating it from the background.
+Content:
+
+The text elements (h2 and p tags) are the content of the card. They display the machine's name, type, status, and a description.
+Box Shadow:
+
+The box-shadow property adds a subtle shadow below the card, giving it a lifted appearance that enhances the visual desig
+
+
+*/

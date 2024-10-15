@@ -47,6 +47,7 @@ import Network from './x60networkoptimization/Network';
 import TraceComponent from './x60networkoptimization/Trace';
 import ProfileComp from './x60networkoptimization/ProfileComp';
 import SecurityHeader from './x61securityheader/SecurityHeader';
+import Swrcach from './x62swrcache/Swrcach';
 
 
 
@@ -55,7 +56,8 @@ import SecurityHeader from './x61securityheader/SecurityHeader';
 const App = () => {
     return (
         <div>
-          <SecurityHeader/>       
+              <Network/>            
+         
         </div>
     );
 };
@@ -63,8 +65,10 @@ const App = () => {
 export default App;
 
 /*
-<WebSocketUse/>
 
+<Swrcach/>
+<WebSocketUse/>
+<SecurityHeader/>
  <MachineStatus/>
 <ProfileComp/>
 <JwtAccess/>

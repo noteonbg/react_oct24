@@ -28,7 +28,8 @@ const MachineSettings = () => {
 
     // Save settings to sessionStorage
     const handleSave = () => {
-        sessionStorage.setItem('machineData', JSON.stringify(machineData));
+        sessionStorage.setItem('machineData', 
+            JSON.stringify(machineData));
         alert('Settings saved!');
     };
 

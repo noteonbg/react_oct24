@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Units Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2rem; /* 2rem is relative to the root font size */
+            color: #333;
+        }
+
+        .percentage {
+            width: 100%; /* 100% width of the parent container */
+            height: 200px; /* Fixed height */
+            background-color: #007bff;
+            margin-bottom: 20px;
+            text-align: center;
+            color: white;
+            line-height: 200px; /* Centers text vertically */
+        }
+
+        .em-example {
+            font-size: 1.5em; /* 1.5 times the size of the parent font size */
+            background-color: #28a745;
+            padding: 10px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .rem-example {
+            font-size: 1.25rem; /* 1.25 times the root font size */
+            background-color: #dc3545;
+            padding: 10px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .vw-example {
+            width: 50vw; /* 50% of the viewport width */
+            height: 100px;
+            background-color: #ffc107;
+            margin-bottom: 20px;
+            text-align: center;
+            line-height: 100px; /* Centers text vertically */
+            color: black;
+        }
+
+        .vh-example {
+            height: 50vh; /* 50% of the viewport height */
+            background-color: #17a2b8;
+            text-align: center;
+            line-height: 50vh; /* Centers text vertically */
+            color: white;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Understanding CSS Units</h1>
+
+    <div class="percentage">
+        <p>100% Width</p>
+    </div>
+    <p>The above box uses <strong>100%</strong> width, taking the full width of its parent container.</p>
+
+    <div class="em-example">
+        <p>This text size is <strong>1.5em</strong> (1.5 times the parent font size).</p>
+    </div>
+    <p>The box above is sized using <strong>em</strong> units, which are relative to the font size of the parent element.</p>
+
+    <div class="rem-example">
+        <p>This text size is <strong>1.25rem</strong> (1.25 times the root font size).</p>
+    </div>
+    <p>Using <strong>rem</strong> units ensures the size is relative to the root element, making it more consistent across different parts of the document.</p>
+
+    <div class="vw-example">
+        <p>This box is <strong>50vw</strong> wide (50% of the viewport width).</p>
+    </div>
+    <p>The box above uses <strong>vw</strong>, which allows it to adjust based on the width of the viewport.</p>
+
+    <div class="vh-example">
+        <p>This box is <strong>50vh</strong> tall (50% of the viewport height).</p>
+    </div>
+    <p>The box above uses <strong>vh</strong>, which allows it to adjust based on the height of the viewport.</p>
+</div>
+
+</body>
+</html>

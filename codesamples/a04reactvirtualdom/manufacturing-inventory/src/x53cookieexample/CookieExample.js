@@ -29,7 +29,8 @@ const MachineSettings = () => {
 
     // Save settings to cookies
     const handleSave = () => {
-        Cookies.set('machineData', JSON.stringify(machineData), { expires: 7 });
+        Cookies.set('machineData',
+             JSON.stringify(machineData), { expires: 7 });
         alert('Settings saved!');
     };
 

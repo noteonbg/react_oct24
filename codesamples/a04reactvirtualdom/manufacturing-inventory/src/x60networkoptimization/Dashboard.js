@@ -7,7 +7,7 @@ const Dashboard = () => {
   const [filter, setFilter] = useState('');
   const [debouncedFilter, setDebouncedFilter] = useState(filter);
   
-  // Debounce effect
+  // Debounce effect or Throttling
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedFilter(filter);

@@ -40,6 +40,7 @@ async def add_security_headers(request, call_next):
     response.headers["X-Frame-Options"] = "DENY"
     response.headers["X-XSS-Protection"] = "1; mode=block"
     response.headers["Content-Security-Policy"] = "default-src 'self'"
+    response.headers['Referrer-Policy'] = 'no-referrer-when-downgrade'  # Referrer policy
     return response
 
 if __name__ == "__main__":

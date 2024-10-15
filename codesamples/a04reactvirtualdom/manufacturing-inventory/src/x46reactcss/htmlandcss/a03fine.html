@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            display: flex; /* Enables flex on the header */
+            justify-content: space-between; /* Space between items */
+            align-items: center; /* Center items vertically */
+        }
+        nav {
+            display: flex; /* Flex on the navigation */
+            gap: 15px; /* Space between navigation links */
+        }
+        .container {
+            display: flex; /* Enables flex on the container */
+            flex-direction: row; /* Default direction */
+            margin: 20px;
+        }
+        .sidebar {
+            flex: 1; /* Sidebar takes 1 part of the available space */
+            background: #eee;
+            padding: 20px;
+        }
+        .main-content {
+            flex: 3; /* Main content takes 3 parts of the available space */
+            background: #fff;
+            padding: 20px;
+            margin-left: 20px; /* Space between sidebar and main content */
+        }
+        footer {
+            background: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            display: flex; /* Flex on the footer */
+            justify-content: center; /* Center footer content */
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Stack items vertically on small screens */
+            }
+            .main-content {
+                margin-left: 0; /* Remove left margin on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Flexbox Layout</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="sidebar">
+        <h2>Sidebar</h2>
+        <p>This is the sidebar content.</p>
+    </div>
+    <div class="main-content">
+        <h2>Main Content</h2>
+        <p>This is the main content area.</p>
+        <p>Flexbox makes it easy to create responsive layouts!</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Flexbox Example. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

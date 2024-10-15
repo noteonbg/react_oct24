@@ -1,3 +1,9 @@
 {
-  "products": []
+  "products": [
+    {
+      "id": "8236",
+      "name": "box",
+      "quantity": 1
+    }
+  ]
 }

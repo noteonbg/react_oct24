@@ -2,7 +2,7 @@
 // src/api.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3001/products'; // Replace with your API endpoint
+const API_URL = 'http://localhost:3000/products'; // Replace with your API endpoint
 
 export const fetchProducts = async () => {
     try {

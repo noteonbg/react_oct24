@@ -16,7 +16,7 @@ app = FastAPI()
 fake_users_db = {
     "user@example.com": {
         "username": "user@example.com",
-        "full_name": "John Doe",
+        "full_name": "abc",
         "hashed_password": "hashedpassword",  # In a real app, hash passwords!
         "disabled": False,
     }

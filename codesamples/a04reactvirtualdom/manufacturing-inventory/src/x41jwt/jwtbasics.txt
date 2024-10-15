@@ -4,7 +4,9 @@ JSON Web Tokens (JWT) are a widely used method for securely transmitting informa
 
 A JWT consists of three parts, separated by dots (`.`):
 
-- Header: Contains metadata about the token, typically specifying the signing algorithm (e.g., HMAC, RSA) and the token type.
+- Header: Contains metadata about the token,
+ typically specifying the signing algorithm 
+ (e.g., HMAC, RSA) and the token type.
   
   Example:
  json
@@ -89,7 +91,8 @@ In a manufacturing company, there is an inventory management system that allows 
 
 1. User Authentication:
    - When an employee logs into the inventory management system, they provide their credentials (username and password).
-   - The system verifies these credentials. If they are valid, the system generates a JWT that includes claims such as:
+   - The system verifies these credentials. If they are valid, 
+   the system generates a JWT that includes claims such as:
      - `sub`: User ID (to identify the user)
      - `role`: User role (Admin or Warehouse Staff)
      - `exp`: Token expiration time (e.g., 1 hour)
@@ -121,4 +124,7 @@ In a manufacturing company, there is an inventory management system that allows 
 
  Conclusion
 
-This example illustrates how JWT can enhance security and efficiency in a manufacturing domain's inventory management system by providing a reliable way to authenticate and authorize users based on their roles.
+This example illustrates how JWT can enhance security and 
+efficiency in a manufacturing domain's inventory management 
+system by providing a reliable way to authenticate and 
+authorize users based on their roles.

@@ -4,7 +4,8 @@ const MachineStatus = () => {
   const [status, setStatus] = useState('');
 
   useEffect(() => {
-    const eventSource = new EventSource('http://localhost:8000/events');
+    const eventSource = new 
+    EventSource('http://localhost:8000/events');
     eventSource.onmessage = (event) => {
         
       setStatus(JSON.parse(event.data).status);

@@ -1,0 +1,70 @@
+1. Code Splitting
+Code splitting allows you to break your application into smaller bundles, which are loaded on demand. This can be done using React.lazy and Suspense.
+
+
+import React, { Suspense, lazy } from 'react';
+
+// Lazy load the component
+const MyComponent = lazy(() => import('./MyComponent'));
+
+function App() {
+  return (
+    <div>
+      <h1>My App</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <MyComponent />
+      </Suspense>
+    </div>
+  );
+}
+
+
+2.Image Optimization
+Optimize images by using formats like WebP, compressing images, and using responsive images.
+
+import React from 'react';
+
+const MyImage = () => (
+  <img 
+    srcSet="image-480w.webp 480w, image-800w.webp 800w" 
+    sizes="(max-width: 480px) 100vw, 800px" 
+    src="image-800w.webp" 
+    alt="Description" 
+  />
+);
+
+
+
+3. Tree Shaking
+Ensure your build tool supports tree shaking to eliminate unused code from your bundles. If you're using Webpack (which is common in React projects), 
+it automatically handles tree shaking for ES6 modules.
+
+
+// Example of importing only what's needed
+import { specificFunction } from 'some-library'; // Only imports specificFunction
+
+4. Minification and Compression
+Use tools like Terser (often integrated with Webpack) to minify 
+your JavaScript and CSS files. Additionally, enable Gzip or 
+Brotli compression on your server
+
+5.
+<link rel="stylesheet" href="https://cdn.example.com/styles.css" />
+
+6.Prefetching and Preloading
+Use <link rel="preload"> or <link rel="prefetch"> in your HTML to hint the browser to load resources early.
+
+<link rel="preload" href="/static/script.js" as="script" />
+
+7. Avoiding Inline Styles and Large CSS Files
+stead of inline styles, use CSS Modules or styled-components for better performance. Also, consider using critical CSS to inline only the styles needed for above-the-fold content.
+
+8. 8. Service Workers for Caching
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(registration => {
+        console.log('Service Worker registered:', registration);
+      });
+  });
+}

@@ -39,6 +39,15 @@ import CsrfToken from './x52csrftoken/Csrftoken';
 import LocalStorage from './x53localstorage/LocalStorage';
 import SessionStorage from './x54sessionstorage/SessionStorage';
 import CacheExample from './x55cacheing/CacheExample';
+import MeasureComponent from './x56networkoptimization/Measure';
+import CssApp from './x57cssusage/CssApp';
+import RenderingStyle from './x58renderingpatterns/Rendering';
+import ModalApp from './x59portalrendering/ModalApp';
+import Network from './x60networkoptimization/Network';
+import TraceComponent from './x60networkoptimization/Trace';
+import ProfileComp from './x60networkoptimization/ProfileComp';
+import SecurityHeader from './x61securityheader/SecurityHeader';
+
 
 
 
@@ -46,7 +55,7 @@ import CacheExample from './x55cacheing/CacheExample';
 const App = () => {
     return (
         <div>
-          <CacheExample/>
+          <SecurityHeader/>       
         </div>
     );
 };
@@ -54,19 +63,32 @@ const App = () => {
 export default App;
 
 /*
+<WebSocketUse/>
 
+ <MachineStatus/>
+<ProfileComp/>
+<JwtAccess/>
+<SessionStorage/>
+<TraceComponent/>
+<Network/> 
+<ModalApp/>
+
+<MeasureComponent/>
+ <SessionStorage/>
+<JwtAccess/>
+ <DbhApp/>
+<CacheExample/>
    <SessionStorage/>
 <LocalStorage/>
  <CsrfToken/>
 <CommentSection/>
-<MachineStatus/>   
+   
 <WebhookPoc/>  
-<WebSocketUse/>
+
 <Usescss/>
 <PocErrorBoundary/>
 <MarkdownEditor/>
 <LazyLoad/>
-<JwtAccess/>
   <DbhApp/>
 <SProductList/>
 <CheckLifeCycle/>

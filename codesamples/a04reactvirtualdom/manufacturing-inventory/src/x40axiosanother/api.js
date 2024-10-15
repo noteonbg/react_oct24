@@ -1,7 +1,7 @@
 // src/api.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3001/products';
+const API_URL = 'http://localhost:3000/products';
 
 // Get all products
 export const getProducts = async () => {

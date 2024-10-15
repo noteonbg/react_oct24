@@ -1,0 +1,14 @@
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    flex: 1 1 300px; /* Flex property for responsiveness */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .machine-status { background-color: #e7f3fe; }
+  .production-stats { background-color: #fff3cd; }
+  .inventory { background-color: #d4edda; }
+  

@@ -1,0 +1,58 @@
+$primary-color: #f9f9f9;
+$secondary-color: #bda4a4;
+$accent-color: #007bff;
+$text-color: #0c2dbf;
+
+body {
+  background-color: $primary-color;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: $text-color;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid $secondary-color;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s;
+
+  &:focus {
+    border-color: $accent-color;
+    outline: none;
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 400px;
+}
+
+li {
+  background-color: $secondary-color;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  position: relative;
+
+  strong {
+    color: $text-color;
+  }
+
+  span {
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}

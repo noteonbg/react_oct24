@@ -1,0 +1,201 @@
+import React, { Component, createContext } from 'react';
+
+// Sample data for pharmaceutical products
+const initialProducts = [
+  { id: 1, name: 'Aspirin', category: 'Pain Relief' },
+  { id: 2, name: 'Ibuprofen', category: 'Pain Relief' },
+  { id: 3, name: 'Acetaminophen', category: 'Pain Relief' },
+  { id: 4, name: 'Amoxicillin', category: 'Antibiotic' },
+  { id: 5, name: 'Metformin', category: 'Diabetes' },
+];
+
+// Create a Context for managing global state
+const ProductContext = createContext();
+
+// Product Provider Component
+class ProductProvider extends Component {
+  state = {
+    products: initialProducts,
+  };
+
+  addProduct = (product) => {
+    this.setState(prevState => ({
+      products: [...prevState.products, product],
+    }));
+  };
+
+  deleteProduct = (id) => {
+    this.setState(prevState => ({
+      products: prevState.products.filter(product => product.id !== id),
+    }));
+  };
+
+  render() {
+    return (
+      <ProductContext.Provider value={{
+        products: this.state.products,
+        addProduct: this.addProduct,
+        deleteProduct: this.deleteProduct,
+      }}>
+        {this.props.children}
+      </ProductContext.Provider>
+    );
+  }
+}
+
+// Main Component
+class PharmaProductList extends Component {
+  static contextType = ProductContext;
+
+  state = {
+    nameSearchTerm: '',
+    categorySearchTerm: '',
+    message: '',
+    newProductName: '',
+    newProductCategory: '',
+  };
+
+  // Lifecycle method: componentDidMount
+  componentDidMount() {
+    console.log('PharmaProductList component has mounted.');
+    // You could fetch data here if needed
+  }
+
+  // Lifecycle method: componentDidUpdate
+  componentDidUpdate(prevProps, prevState) {
+    console.log('PharmaProductList component has updated.');
+    if (prevState.nameSearchTerm !== this.state.nameSearchTerm ||
+        prevState.categorySearchTerm !== this.state.categorySearchTerm) {
+      console.log('Search terms updated.');
+    }
+  }
+
+  // Lifecycle method: componentWillUnmount
+  componentWillUnmount() {
+    console.log('PharmaProductList component is about to unmount.');
+    // Cleanup code can be placed here
+  }
+
+  handleDelete = (id) => {
+    this.context.deleteProduct(id);
+    this.setState({ message: 'Product deleted successfully!' });
+  };
+
+  handleInputChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleAddProduct = (event) => {
+    event.preventDefault(); // Prevent page refresh
+    const { newProductName, newProductCategory } = this.state;
+
+    if (newProductName && newProductCategory) {
+      const newProduct = {
+        id: Date.now(),
+        name: newProductName,
+        category: newProductCategory,
+      };
+      this.context.addProduct(newProduct);
+      this.setState({
+        message: 'Product added successfully!',
+        newProductName: '',
+        newProductCategory: '',
+      });
+    } else {
+      this.setState({ message: 'Please fill out all fields.' });
+    }
+  };
+
+  render() {
+    const { products } = this.context;
+    const { nameSearchTerm, categorySearchTerm, message, newProductName, newProductCategory } = this.state;
+
+    const filteredProducts = products.filter(product =>
+      product.name.toLowerCase().includes(nameSearchTerm.toLowerCase()) &&
+      product.category.toLowerCase().includes(categorySearchTerm.toLowerCase())
+    );
+
+    return (
+      <div style={{ padding: '20px' }}>
+        <h1>Pharmaceutical Products</h1>
+        
+        <form onSubmit={this.handleAddProduct}>
+          <input
+            type="text"
+            name="newProductName"
+            placeholder="New Product Name"
+            value={newProductName}
+            onChange={this.handleInputChange}
+          />
+          <input
+            type="text"
+            name="newProductCategory"
+            placeholder="New Product Category"
+            value={newProductCategory}
+            onChange={this.handleInputChange}
+          />
+          <button type="submit">Add Product</button>
+        </form>
+        
+        <input
+          type="text"
+          name="nameSearchTerm"
+          placeholder="Search by product name..."
+          value={nameSearchTerm}
+          onChange={this.handleInputChange}
+        />
+        <input
+          type="text"
+          name="categorySearchTerm"
+          placeholder="Search by category..."
+          value={categorySearchTerm}
+          onChange={this.handleInputChange}
+        />
+        
+        {message && <div style={{ color: 'green' }}>{message}</div>}
+
+        {filteredProducts.length === 0 ? (
+          <div style={{ color: 'red' }}>No products found.</div>
+        ) : (
+          <ul>
+            {filteredProducts.map(product => (
+              <li key={product.id}>
+                <strong>{product.name}</strong> - {product.category}
+                <button onClick={() => this.handleDelete(product.id)} style={{ marginLeft: '10px', color: 'red' }}>
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    );
+  }
+}
+
+// Main App Component
+class App extends Component {
+  render() {
+    return (
+      <ProductProvider>
+        <PharmaProductList />
+      </ProductProvider>
+    );
+  }
+}
+
+export default App;
+
+/*
+
+
+componentDidMount: This method is called once, immediately after the component is added to the DOM. It’s a good place to initiate data fetching or other setup tasks. In this example, a console log is used.
+
+componentDidUpdate: This method is called after the component updates (e.g., due to state or props changes). It receives the previous props and state as arguments, allowing you to perform actions based on the differences. Here, it checks if the search terms have changed.
+
+componentWillUnmount: This method is called just before the component is removed from the DOM. It’s often used for cleanup tasks, such as invalidating timers or cancelling network requests. Again, a console log is used in this example.
+
+
+
+*/
+

@@ -58,7 +58,7 @@ Use <link rel="preload"> or <link rel="prefetch"> in your HTML to hint the brows
 <link rel="preload" href="/static/script.js" as="script" />
 
 7. Avoiding Inline Styles and Large CSS Files
-stead of inline styles, use CSS Modules or styled-components for better performance. Also, consider using critical CSS to inline only the styles needed for above-the-fold content.
+instead of inline styles, use CSS Modules or styled-components for better performance. Also, consider using critical CSS to inline only the styles needed for above-the-fold content.
 
 8. 8. Service Workers for Caching
 if ('serviceWorker' in navigator) {

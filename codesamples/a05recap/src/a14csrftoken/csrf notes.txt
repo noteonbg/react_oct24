@@ -1,0 +1,67 @@
+XSS ( Cross site scripting)
+
+input
+<script>alert('XSS Attack!');</script>
+must be sanitized this usually is required
+dom purify...
+any html content must be sanitized..
+
+CSRF attack
+<html>
+<body>
+    <h1>Click Here for Free Stuff!</h1>
+    <form action="https://order-management.example.com/update_order" method="POST" id="csrfForm">
+        <input type="hidden" name="order_id" value="12345">
+        <input type="hidden" name="status" value="cancelled">
+    </form>
+    <script>
+        document.getElementById('csrfForm').submit();
+    </script>
+</body>
+</html>
+
+CSRF
+CSRF Tokens: Require a unique token for each state-changing request (e.g., submitting forms). The server generates this token, and the client must include it in requests
+
+SameSite Cookies: Use the SameSite attribute for session cookies to prevent them from being sent with cross-origin requests.
+
+Referer Header Validation: Check the Referer header to ensure that the request is coming from a trusted origin.
+
+------------------------------------
+
+Simple CORS Requests
+These are requests that meet certain criteria and do
+
+Example Headers:
+Accept
+Accept-Language
+Content-Language
+Content-Type (only with specific values: application/x-www-form-urlencoded, multipart/form-data, or text/plain)
+
+Preflight Requests
+OPTIONS /api/resource HTTP/1.1
+Origin: https://example.com
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: X-Custom-Header
+
+Allowing Specific Origins
+Access-Control-Allow-Origin: https://specific-origin.com
+
+------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,7 +7,7 @@ const Home = () => {
       <h1>Welcome to the App!</h1>
       <p>Please log in to continue.</p>
       <Link to="/login"> Login </Link>
-     <br/> <Link to="/Other"> Other Login </Link>
+     
       
     </div>
 };

@@ -1,7 +1,7 @@
 // src/components/PostLogin.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import About from './About';
+
 
 const PostLogin = ({ onLogout,username }) => {
   const [num1, setNum1] = useState('');
@@ -32,7 +32,7 @@ const PostLogin = ({ onLogout,username }) => {
       <button onClick={handleAdd}>Add</button>
       {result !== null && <h2>Result: {result}</h2>}
       <button onClick={onLogout}>Logout</button>
-      <About/>
+      
 
       <Link to="/read-number" state={{ number: result }}>
         <button disabled={result === null}>Go to Read Number</button>
